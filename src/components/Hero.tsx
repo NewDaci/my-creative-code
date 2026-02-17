@@ -14,14 +14,14 @@ const Hero = () => {
         color="hsl(43, 74%, 49%)"
         count={400}
         particleShape="capsule"
-        magnetRadius={8}
+        magnetRadius={15}
         ringRadius={7}
         waveSpeed={0.4}
         waveAmplitude={1}
         particleSize={1.5}
         lerpSpeed={0.05}
-        autoAnimate
-        rotationSpeed={0.1}
+        autoAnimate={false}
+        rotationSpeed={0}
         depthFactor={1}
         pulseSpeed={3}
         fieldStrength={10}
