@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
+import Antigravity from "@/components/Antigravity";
 
 const Hero = () => {
   return (
@@ -9,13 +9,24 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      >
-        <div className="absolute inset-0 bg-charcoal/70" />
-      </div>
+      {/* Antigravity Particle Background */}
+      <Antigravity
+        color="hsl(43, 74%, 49%)"
+        count={400}
+        particleShape="capsule"
+        magnetRadius={8}
+        ringRadius={7}
+        waveSpeed={0.4}
+        waveAmplitude={1}
+        particleSize={1.5}
+        lerpSpeed={0.05}
+        autoAnimate
+        rotationSpeed={0.1}
+        depthFactor={1}
+        pulseSpeed={3}
+        fieldStrength={10}
+      />
+      <div className="absolute inset-0 bg-charcoal/60" />
 
       {/* Side Text */}
       <motion.div
