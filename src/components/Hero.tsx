@@ -26,14 +26,14 @@ const Hero = () => {
         pulseSpeed={3}
         fieldStrength={10}
       />
-      <div className="absolute inset-0 bg-charcoal/60" />
+      <div className="absolute inset-0 bg-charcoal/60 pointer-events-none" />
 
       {/* Side Text */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:block"
+        className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none"
       >
         <p className="text-xs tracking-[0.3em] text-muted-foreground uppercase -rotate-90 origin-center whitespace-nowrap">
           Est. 2024 — Developer
@@ -41,7 +41,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pointer-events-none">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto"
         >
           <Button variant="hero" size="xl" asChild>
             <a href="#works">View Projects</a>
@@ -99,7 +99,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-gold transition-colors cursor-pointer"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-gold transition-colors cursor-pointer pointer-events-auto"
       >
         <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
         <motion.div
