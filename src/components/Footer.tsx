@@ -17,7 +17,7 @@ const Footer = () => {
             <span className="text-2xl font-display font-bold text-gold">
               {"</>"}
             </span>
-            <span className="text-foreground font-display">YourName</span>
+            <span className="text-foreground font-display"></span>
           </div>
 
           {/* Copyright */}

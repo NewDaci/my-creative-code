@@ -22,7 +22,7 @@ const About = () => {
           >
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800"
+                src="/me.png"
                 alt="Developer Portrait"
                 className="w-full h-full object-cover"
               />
@@ -75,7 +75,7 @@ const About = () => {
 
             {/* Signature */}
             <div className="mb-10">
-              <p className="font-display text-2xl italic text-gold">Your Name</p>
+              <p className="font-display text-2xl italic text-gold">Ranjeet Sharma</p>
               <p className="text-sm text-muted-foreground">Developer & ML Engineer</p>
             </div>
 

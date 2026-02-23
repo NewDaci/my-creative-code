@@ -10,21 +10,21 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@yourname.com",
-    href: "mailto:hello@yourname.com",
+    value: "ai.ranjt@gmail.com",
+    href: "mailto:ai.ranjt@gmail.com",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Your City, Country",
+    value: "New Delhi, India",
     href: null,
   },
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Github, href: "https://github.com/NewDaci", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/ranjit20sh/", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/daci_20", label: "Twitter" },
 ];
 
 const Contact = () => {
