@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const freelanceProjects = [
   {
@@ -8,6 +8,7 @@ const freelanceProjects = [
     url: "https://ainrion.com/",
     description: "Corporate website with modern design and seamless UX",
     domain: "ainrion.com",
+    category: "Corporate",
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ const freelanceProjects = [
     url: "https://devranjit.in/",
     description: "Personal portfolio showcasing development expertise",
     domain: "devranjit.in",
+    category: "Portfolio",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const freelanceProjects = [
     url: "https://riarecopulpsolutions.com/",
     description: "Industrial business website for recycling solutions",
     domain: "riarecopulpsolutions.com",
+    category: "Industrial",
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ const freelanceProjects = [
     url: "https://fitoor.world/",
     description: "Lifestyle brand platform with immersive storytelling",
     domain: "fitoor.world",
+    category: "Lifestyle",
   },
   {
     id: 5,
@@ -36,8 +40,13 @@ const freelanceProjects = [
     url: "https://www.thea2kreation.com/",
     description: "Creative agency site with bold visual identity",
     domain: "thea2kreation.com",
+    category: "Agency",
   },
 ];
+
+// Generate live screenshot URLs (free service, no API key needed)
+const getScreenshot = (url: string) =>
+  `https://image.thum.io/get/width/1200/crop/800/noanimate/${url}`;
 
 const FreelanceProjects = () => {
   return (
@@ -62,45 +71,98 @@ const FreelanceProjects = () => {
           </p>
         </motion.div>
 
-        {/* Projects List */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {freelanceProjects.map((project, index) => (
-            <motion.a
+        {/* Projects Grid - First row 2 large cards, then 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {freelanceProjects.slice(0, 2).map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} large />
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {freelanceProjects.slice(2).map((project, index) => (
+            <ProjectCard
               key={project.id}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group flex items-center justify-between p-6 md:p-8 bg-card rounded-lg border border-border hover:border-gold/50 transition-all duration-300 hover-lift"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-gold text-xs tracking-wider uppercase font-mono">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="h-px flex-1 bg-border max-w-[40px]" />
-                  <span className="text-xs text-muted-foreground font-mono truncate">
-                    {project.domain}
-                  </span>
-                </div>
-                <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground group-hover:text-gold transition-colors duration-300">
-                  {project.name}
-                </h3>
-                <p className="text-muted-foreground text-sm mt-2">
-                  {project.description}
-                </p>
-              </div>
-              <div className="ml-6 w-12 h-12 rounded-full border border-border group-hover:border-gold group-hover:bg-gold/10 flex items-center justify-center text-foreground/60 group-hover:text-gold transition-all duration-300 shrink-0">
-                <ExternalLink size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-              </div>
-            </motion.a>
+              project={project}
+              index={index + 2}
+            />
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+const ProjectCard = ({
+  project,
+  index,
+  large = false,
+}: {
+  project: (typeof freelanceProjects)[0];
+  index: number;
+  large?: boolean;
+}) => {
+  return (
+    <motion.a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group relative block bg-card rounded-xl overflow-hidden border border-border hover:border-gold/50 transition-all duration-500 hover-lift"
+    >
+      {/* Browser-style top bar */}
+      <div className="flex items-center gap-2 px-4 py-3 bg-charcoal-light border-b border-border">
+        <div className="flex gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
+          <span className="w-2.5 h-2.5 rounded-full bg-gold/60" />
+          <span className="w-2.5 h-2.5 rounded-full bg-primary/40" />
+        </div>
+        <div className="flex-1 flex justify-center">
+          <span className="text-xs text-muted-foreground font-mono truncate max-w-[200px]">
+            {project.domain}
+          </span>
+        </div>
+        <ArrowUpRight
+          size={14}
+          className="text-muted-foreground group-hover:text-gold group-hover:rotate-12 transition-all duration-300"
+        />
+      </div>
+
+      {/* Screenshot */}
+      <div className={`relative overflow-hidden bg-charcoal-light ${large ? "aspect-[16/10]" : "aspect-[16/11]"}`}>
+        <img
+          src={getScreenshot(project.url)}
+          alt={`${project.name} website preview`}
+          loading="lazy"
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          onError={(e) => {
+            // Fallback if screenshot fails
+            (e.currentTarget as HTMLImageElement).style.display = "none";
+          }}
+        />
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+
+        {/* Category badge */}
+        <div className="absolute top-4 left-4">
+          <span className="text-[10px] tracking-[0.2em] uppercase text-gold bg-charcoal/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gold/30">
+            {project.category}
+          </span>
+        </div>
+
+        {/* Bottom content */}
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <h3 className={`font-display font-semibold text-foreground group-hover:text-gold transition-colors duration-300 ${large ? "text-3xl" : "text-2xl"}`}>
+            {project.name}
+          </h3>
+          <p className="text-muted-foreground text-sm mt-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+            {project.description}
+          </p>
+        </div>
+      </div>
+    </motion.a>
   );
 };
 
