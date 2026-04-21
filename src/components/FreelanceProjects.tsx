@@ -1,14 +1,20 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import ainrionImg from "@/assets/freelance-ainrion.png";
+import devranjitImg from "@/assets/freelance-devranjit.png";
+import riarecoImg from "@/assets/freelance-riareco.png";
+import fitoorImg from "@/assets/freelance-fitoor.png";
+import a2kreationImg from "@/assets/freelance-a2kreation.png";
 
 const freelanceProjects = [
   {
     id: 1,
     name: "Ainrion",
     url: "https://ainrion.com/",
-    description: "Corporate website with modern design and seamless UX",
+    description: "Corporate R&D website for AI, Blockchain & IoT solutions",
     domain: "ainrion.com",
     category: "Corporate",
+    image: ainrionImg,
   },
   {
     id: 2,
@@ -17,36 +23,36 @@ const freelanceProjects = [
     description: "Personal portfolio showcasing development expertise",
     domain: "devranjit.in",
     category: "Portfolio",
+    image: devranjitImg,
   },
   {
     id: 3,
     name: "Ria Reco Pulp Solutions",
     url: "https://riarecopulpsolutions.com/",
-    description: "Industrial business website for recycling solutions",
+    description: "Industrial business website for firewood & eco pulp supplies",
     domain: "riarecopulpsolutions.com",
     category: "Industrial",
+    image: riarecoImg,
   },
   {
     id: 4,
     name: "Fitoor World",
     url: "https://fitoor.world/",
-    description: "Lifestyle brand platform with immersive storytelling",
+    description: "Travel platform for curated dream destinations",
     domain: "fitoor.world",
-    category: "Lifestyle",
+    category: "Travel",
+    image: fitoorImg,
   },
   {
     id: 5,
     name: "A2 Kreation",
     url: "https://www.thea2kreation.com/",
-    description: "Creative agency site with bold visual identity",
+    description: "Events & hospitality agency with bold visual identity",
     domain: "thea2kreation.com",
-    category: "Agency",
+    category: "Events",
+    image: a2kreationImg,
   },
 ];
-
-// Generate live screenshot URLs (free service, no API key needed)
-const getScreenshot = (url: string) =>
-  `https://image.thum.io/get/width/1200/crop/800/noanimate/${url}`;
 
 const FreelanceProjects = () => {
   return (
