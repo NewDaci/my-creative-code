@@ -139,7 +139,7 @@ const ProjectCard = ({
       {/* Screenshot */}
       <div className={`relative overflow-hidden bg-charcoal-light ${large ? "aspect-[16/10]" : "aspect-[16/11]"}`}>
         <img
-          src={getScreenshot(project.url)}
+          src={project.image}
           alt={`${project.name} website preview`}
           loading="lazy"
           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
